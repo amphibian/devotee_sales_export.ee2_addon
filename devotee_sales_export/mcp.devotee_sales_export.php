@@ -135,6 +135,8 @@ class Devotee_sales_export_mcp {
 					}
 					
 					$title = 'devotee-sales-export';
+					
+					$start_date = $this->EE->input->post('start_date');
 					if(!empty($start_date))
 					{
 						$title .= '-'.$start_date;
@@ -143,6 +145,8 @@ class Devotee_sales_export_mcp {
 					{
 						$title .= '-'.$this->EE->localize->decode_date('%Y-%m-%d', $this->EE->localize->now - 31556926, FALSE);
 					}
+					
+					$end_date = $this->EE->input->post('end_date');
 					if(!empty($end_date))
 					{
 						$title .= '-'.$end_date;
