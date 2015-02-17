@@ -45,7 +45,7 @@ class Devotee_sales_export_mcp {
 
 	public function index()
 	{
-		$this->EE->cp->set_variable('cp_page_title', lang('devotee_sales_export_module_name'));
+		$this->EE->view->cp_page_title = lang('devotee_sales_export_module_name');
 		if( ! $credentials = $this->_get_credentials() )
 		{
 			$this->EE->functions->redirect($this->_base_url.AMP.'method=credentials');
@@ -75,7 +75,7 @@ class Devotee_sales_export_mcp {
 
 	public function credentials()
 	{
-		$this->EE->cp->set_variable('cp_page_title', lang('devotee_sales_export_credentials'));
+		$this->EE->view->cp_page_title = lang('devotee_sales_export_credentials');
 		if( ! $vars = $this->_get_credentials() )
 		{
 			$vars = array(
@@ -118,12 +118,12 @@ class Devotee_sales_export_mcp {
 							{							
 								if($k == 'purchase_date')
 								{
-									$new_item['purchase_date'] = $this->EE->localize->set_human_time($item['purchase_date']);
+									$new_item['purchase_date'] = $this->EE->localize->human_time($item['purchase_date']);
 								}
 								elseif($k == 'price')
 								{
 									$new_item['price'] = $item['price'];
-									$new_item['net'] = number_format($item['price'] * 0.8, 2);
+									$new_item['net'] = number_format($item['price'] * 0.7, 2);
 								}
 								else
 								{
@@ -143,7 +143,7 @@ class Devotee_sales_export_mcp {
 					}
 					else
 					{
-						$title .= '-'.$this->EE->localize->decode_date('%Y-%m-%d', $this->EE->localize->now - 31556926, FALSE);
+						$title .= '-'.$this->EE->localize->format_date('%Y-%m-%d', $this->EE->localize->now - 31556926, FALSE);
 					}
 					
 					$end_date = $this->EE->input->post('end_date');
@@ -153,7 +153,7 @@ class Devotee_sales_export_mcp {
 					}
 					else
 					{
-						$title .= '-'.$this->EE->localize->decode_date('%Y-%m-%d', $this->EE->localize->now, FALSE);
+						$title .= '-'.$this->EE->localize->format_date('%Y-%m-%d', $this->EE->localize->now, FALSE);
 					}
 					$title .= '.csv';
 					

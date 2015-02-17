@@ -1,6 +1,6 @@
 <?php
     $this->EE =& get_instance();
-
+	$this->EE->load->library('table');
 	echo form_open('C=addons_modules'.AMP.'M=show_module_cp'.AMP.'module=devotee_sales_export'.AMP.'method=save');
 	
 	$this->EE->table->set_template($cp_pad_table_template);

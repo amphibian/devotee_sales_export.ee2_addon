@@ -1,6 +1,7 @@
 <?php
 
     $this->EE =& get_instance();
+	$this->EE->load->library('table');
     
     $this->EE->cp->add_js_script(array('ui' => array('datepicker')));
 	$this->EE->cp->load_package_js('js');
